@@ -1,0 +1,16 @@
+file://ne_10m_admin_1_states_provinces.zip <- http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_admin_1_states_provinces.zip ! download
+
+file://ne_10m_admin_1_states_provinces.README.html, file://ne_10m_admin_1_states_provinces.VERSION.txt, file://ne_10m_admin_1_states_provinces.dbf, file://ne_10m_admin_1_states_provinces.prj, file://ne_10m_admin_1_states_provinces.shp, file://ne_10m_admin_1_states_provinces.shx <- file://ne_10m_admin_1_states_provinces.zip
+    unzip ne_10m_admin_1_states_provinces.zip
+
+file://ne_10m_admin_1_states_provinces.geojson <- file://ne_10m_admin_1_states_provinces.dbf, file://ne_10m_admin_1_states_provinces.prj, file://ne_10m_admin_1_states_provinces.shp, file://ne_10m_admin_1_states_provinces.shx
+   ogr2ogr -select name,adm1_cod_1,admin,adm0_a3  -f geojson ne_10m_admin_1_states_provinces.geojson ne_10m_admin_1_states_provinces.shp
+    
+file://../data <-
+    cd ..    
+    mkdir data
+    
+file://../data/admin1.geojson <- file://ne_10m_admin_1_states_provinces.geojson, file://../data
+# Change the name of the fields after conversion
+    cat ne_10m_admin_1_states_provinces.geojson | sed 's/"adm0_a3": /"ISO3166-1-Alpha-3": /g' | sed 's/"adm1_cod_1": /"id": /g' | sed 's/"admin": /"country": /g'  > ../data/admin1.geojson
+
