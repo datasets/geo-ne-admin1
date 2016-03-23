@@ -1,4 +1,4 @@
-file://ne_10m_admin_1_states_provinces.zip <- http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_admin_1_states_provinces.zip ! download
+#file://ne_10m_admin_1_states_provinces.zip <- http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_admin_1_states_provinces.zip ! download
 
 file://ne_10m_admin_1_states_provinces.README.html, file://ne_10m_admin_1_states_provinces.VERSION.txt, file://ne_10m_admin_1_states_provinces.dbf, file://ne_10m_admin_1_states_provinces.prj, file://ne_10m_admin_1_states_provinces.shp, file://ne_10m_admin_1_states_provinces.shx <- file://ne_10m_admin_1_states_provinces.zip
     unzip ne_10m_admin_1_states_provinces.zip
@@ -10,7 +10,44 @@ file://../data <-
     cd ..    
     mkdir data
     
-file://../data/admin1.geojson <- file://ne_10m_admin_1_states_provinces.geojson, file://../data
-# Change the name of the fields after conversion
-    cat ne_10m_admin_1_states_provinces.geojson | sed 's/"adm0_a3": /"ISO3166-1-Alpha-3": /g' | sed 's/"adm1_cod_1": /"id": /g' | sed 's/"admin": /"country": /g'  > ../data/admin1.geojson
+file://../data/admin1.geojson <- file://ne_10m_admin_1_states_provinces.geojson, file://../data ! python
+    import json
+    with open('ne_10m_admin_1_states_provinces.geojson') as fin:
+        geojson = json.load(fin)
+    HEADER = """{
+        "type": "FeatureCollection",                                                                               
+        "features": [
+    """
+    FOOTER = """    ]
+    }
+    """
+    
+    def rename_key(k):
+        m = {  
+            "adm0_a3": "ISO3166-1-Alpha-3",
+            "adm1_cod_1": "id",
+            "admin": "country",
+            }
+        if k in m:
+            return m[k]
+        else :
+            return k
+    def remodel(obj):
+        if isinstance(obj, float):
+            # cuts figures to reduce size of the json file
+            return round(obj, 5)
+        elif isinstance(obj, dict): 
+            res = {rename_key(k): remodel(v) for k, v in obj.iteritems()}
+            return res
+        elif isinstance(obj, list):
+            res = [remodel(v) for v in obj]
+            return res
+        else:
+            return obj
+    with open('../data/admin1.geojson', 'w') as fout:
+        fout.write(HEADER)
+        for feature in geojson["features"]:
+            fout.write(str(remodel(feature)))
+            fout.write("\n")
+        fout.write(FOOTER)
 
