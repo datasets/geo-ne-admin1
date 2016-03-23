@@ -14,6 +14,14 @@ file://../data/admin1.geojson <- file://ne_10m_admin_1_states_provinces.geojson,
     import json
     with open('ne_10m_admin_1_states_provinces.geojson') as fin:
         geojson = json.load(fin)
+    HEADER = """{
+        "type": "FeatureCollection",                                                                               
+        "features": [
+    """
+    FOOTER = """    ]
+    }
+    """
+    
     def rename_key(k):
         m = {  
             "adm0_a3": "ISO3166-1-Alpha-3",
@@ -37,6 +45,11 @@ file://../data/admin1.geojson <- file://ne_10m_admin_1_states_provinces.geojson,
         else:
             return obj
     with open('../data/admin1.geojson', 'w') as fout:
-        outstr = json.dumps(remodel(geojson), sort_keys=True)
-        fout.write(outstr)
+        fout.write(HEADER)
+        for feature in geojson["features"]:
+            out_feature = remodel(feature)
+            line = json.dumps(out_feature, sort_keys=True)
+            fout.write(line)
+            fout.write("\n")
+        fout.write(FOOTER)
 
