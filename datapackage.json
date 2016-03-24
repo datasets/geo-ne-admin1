@@ -5,7 +5,7 @@
   "description": "Polygons polygons for the largest administrative subdivisions in every countries",
   "repository": {
     "type": "git",
-    "url": "git://github.com/lexman/geo-admin1.git"
+    "url": "git://github.com/lexman/geo-ne-admin1.git"
   },
   "sources": [{
     "name": "Natural Earth",
@@ -62,5 +62,5 @@
       ]
     }
   ],
-  "homepage": "http://github.com/lexman/geo-admin1"
+  "homepage": "http://github.com/lexman/geo-ne-admin1"
 }
