@@ -7,7 +7,7 @@ file://ne_10m_admin_1_states_provinces.geojson <- file://ne_10m_admin_1_states_p
    ogr2ogr -select name,adm1_cod_1,admin,adm0_a3  -f geojson ne_10m_admin_1_states_provinces.geojson ne_10m_admin_1_states_provinces.shp
     
 file://../data <-
-    cd ..    
+    cd ..
     mkdir data
     
 file://../data/admin1.geojson <- file://ne_10m_admin_1_states_provinces.geojson, file://../data ! python
@@ -53,4 +53,3 @@ file://../data/admin1.geojson <- file://ne_10m_admin_1_states_provinces.geojson,
             fout.write(line)
             fout.write("\n")
         fout.write(FOOTER)
-
