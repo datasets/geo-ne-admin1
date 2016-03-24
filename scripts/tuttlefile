@@ -54,6 +54,8 @@ file://../data/admin1.geojson <- file://ne_10m_admin_1_states_provinces.geojson,
                 first_line = False
             out_feature = remodel(feature)
             out_feature['properties']['id'] = out_feature['properties']['id'][4:]
+            if out_feature['properties']['id'] == "00?":
+                out_feature['properties']['id'] = None
             line = json.dumps(out_feature, sort_keys=True)
             fout.write(line)
         fout.write(FOOTER)
