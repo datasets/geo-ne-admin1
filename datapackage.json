@@ -1,6 +1,6 @@
 {
-  "name": "geo-admin1",
-  "title": "Admin1 Polygons as GeoJSON",
+  "name": "geo-ne-admin1",
+  "title": "Natural Earth Admin1 Polygons as GeoJSON",
   "version": "0.1.0",
   "description": "Polygons polygons for the largest administrative subdivisions in every countries",
   "repository": {
