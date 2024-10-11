@@ -56,7 +56,7 @@
           }
         ]
       },
-      "foreignKeys" : [
+      "foreignKeys": [
         {
           "fields": "ISO3166-1-Alpha-3",
           "reference": {
@@ -68,5 +68,6 @@
       ]
     }
   ],
-  "homepage": "http://github.com/datasets/geo-ne-admin1"
+  "homepage": "http://github.com/datasets/geo-ne-admin1",
+  "collection": "geojson"
 }
