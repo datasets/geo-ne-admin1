@@ -1,6 +1,6 @@
 {
   "name": "geo-ne-admin1",
-  "title": "Natural Earth Admin1 Polygons as GeoJSON",
+  "title": "GeoBoundaries Admin1 Polygons as GeoJSON",
   "version": "0.1.0",
   "description": "Polygons polygons for the largest administrative subdivisions in every countries",
   "repository": {
@@ -9,9 +9,9 @@
   },
   "sources": [
     {
-      "name": "Natural Earth",
-      "path": "http://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-1-states-provinces/",
-      "title": "Natural Earth"
+      "name": "geoBoundaries",
+      "path": "https://github.com/wmgeolab/geoBoundaries/raw/main/releaseData/CGAZ/geoBoundariesCGAZ_ADM1.geojson",
+      "title": "geoBoundaries"
     }
   ],
   "keywords": [
@@ -35,23 +35,40 @@
       "schema": {
         "fields": [
           {
-            "name": "name",
-            "description": "Common name of the zone",
-            "type": "string"
+            "name": "geometry",
+            "description": "The geometry of the feature, including coordinates and type",
+            "type": "object"
           },
           {
-            "name": "id",
-            "description": "Code for the zone inside the country",
-            "type": "string"
+            "name": "properties",
+            "description": "Additional information about the feature",
+            "type": "object",
+            "fields": [
+              {
+                "name": "name",
+                "description": "Common name of the zone",
+                "type": "string"
+              },
+              {
+                "name": "id",
+                "description": "Code for the zone inside the country",
+                "type": "string"
+              },
+              {
+                "name": "country",
+                "description": "Name of the country",
+                "type": "string"
+              },
+              {
+                "name": "ISO3166-1-Alpha-3",
+                "description": "3 characters code for the country, according to ISO3166 standard",
+                "type": "string"
+              }
+            ]
           },
           {
-            "name": "country",
-            "description": "Name of the country",
-            "type": "string"
-          },
-          {
-            "name": "ISO3166-1-Alpha-3",
-            "description": "3 characters code for the country, according to ISO3166 standard",
+            "name": "type",
+            "description": "The type of the feature, e.g., 'Feature'",
             "type": "string"
           }
         ]
