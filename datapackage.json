@@ -1,17 +1,17 @@
 {
   "name": "geo-ne-admin1",
-  "title": "GeoBoundaries Admin1 Polygons as GeoJSON",
+  "title": "Natural Earth Admin1 Polygons as GeoJSON",
   "version": "0.1.0",
-  "description": "Polygons polygons for the largest administrative subdivisions in every countries",
+  "description": "Geodata package providing GeoJSON polygons for first-order administrative subdivisions worldwide.",
   "repository": {
     "type": "git",
     "url": "git://github.com/datasets/geo-ne-admin1.git"
   },
   "sources": [
     {
-      "name": "geoBoundaries",
-      "path": "https://github.com/wmgeolab/geoBoundaries/raw/main/releaseData/CGAZ/geoBoundariesCGAZ_ADM1.geojson",
-      "title": "geoBoundaries"
+      "name": "Natural Earth",
+      "path": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_admin_1_states_provinces.geojson",
+      "title": "Natural Earth"
     }
   ],
   "keywords": [
@@ -32,57 +32,30 @@
       "path": "data/admin1.geojson",
       "format": "geojson",
       "mediatype": "application/json",
-      "schema": {
-        "fields": [
-          {
-            "name": "geometry",
-            "description": "The geometry of the feature, including coordinates and type",
-            "type": "object"
-          },
-          {
-            "name": "properties",
-            "description": "Additional information about the feature",
-            "type": "object",
-            "fields": [
-              {
-                "name": "name",
-                "description": "Common name of the zone",
-                "type": "string"
-              },
-              {
-                "name": "id",
-                "description": "Code for the zone inside the country",
-                "type": "string"
-              },
-              {
-                "name": "country",
-                "description": "Name of the country",
-                "type": "string"
-              },
-              {
-                "name": "ISO3166-1-Alpha-3",
-                "description": "3 characters code for the country, according to ISO3166 standard",
-                "type": "string"
-              }
-            ]
-          },
-          {
-            "name": "type",
-            "description": "The type of the feature, e.g., 'Feature'",
-            "type": "string"
-          }
-        ]
-      },
-      "foreignKeys": [
-        {
-          "fields": "ISO3166-1-Alpha-3",
-          "reference": {
-            "datapackage": "https://github.com/datasets/country-codes/",
-            "resource": "country-codes",
-            "fields": "ISO3166-1-Alpha-3"
-          }
+        "schema": {
+          "fields": [
+            {
+              "name": "name",
+              "description": "Common name of the administrative subdivision",
+              "type": "string"
+            },
+            {
+              "name": "admin",
+              "description": "Country name",
+              "type": "string"
+            },
+            {
+              "name": "iso_3166_2",
+              "description": "ISO 3166-2 subdivision code",
+              "type": "string"
+            },
+            {
+              "name": "adm0_a3",
+              "description": "ISO 3166-1 alpha-3 country code",
+              "type": "string"
+            }
+          ]
         }
-      ]
     }
   ],
   "homepage": "http://github.com/datasets/geo-ne-admin1",

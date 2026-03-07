@@ -1,41 +1,27 @@
 <a className="gh-badge" href="https://datahub.io/core/geo-ne-admin1"><img src="https://badgen.net/badge/icon/View%20on%20datahub.io/orange?icon=https://datahub.io/datahub-cube-badge-icon.svg&label&scale=1.25" alt="badge" /></a>
 
-Geodata [data package][datapackage] providing geojson polygons for the largest administrative subdivisions in every countries.
+Geodata [data package][datapackage] providing GeoJSON polygons for first-order administrative subdivisions worldwide.
 
 
 ## Data
 
-The data comes from [geoboundaries][geoboundaries], a community effort to make visually pleasing, well-crafted maps with cartography or GIS software at small scale.
+The data comes from [Natural Earth][natural-earth], a public domain map dataset for cartography and GIS.
 
-[Admin1][doc] is the biggest administrative subdivision of countries. Note that it is very heterogeneous among countries : in the United States 
-of America, admin1 represents states, whereas they don't represent the inner countries in the United Kingdom. For more information, please see [official documentation][doc] 
+[Admin1][doc] is the biggest administrative subdivision of countries. Note that it is very heterogeneous among countries: in the United States 
+of America, admin1 represents states, whereas they don't represent inner countries in the United Kingdom. For more information, please see [official documentation][doc] 
 or https://en.wikipedia.org/wiki/Table_of_administrative_divisions_by_country.
 
-The shape of the `admin1` data has the following fields:
+The `admin1` resource exposes the following key properties:
 
-* **geometry**:  
-  Represents the spatial geometry of the administrative subdivision. It includes:
-  - The type of geometry (e.g., `Polygon`, `MultiPolygon`).
-  - The associated coordinates that define its boundaries.
-
-* **properties**:  
-  Contains metadata describing the administrative subdivision, with the following fields:
-  - **name**:  
-    The common name for this `admin1` subdivision.
-  - **id**:  
-    Code for the subdivision inside the country. [Documentation][doc] is not clear what this code is, but it could be FIPS. Note that some countries, like *Vatican*, are so small they don't have inner administrative subdivisions. In such cases, the code could be *null* and is irrelevant.
-  - **country**:  
-    The name of the country where the subdivision is located.
-  - **ISO3166-1-Alpha-3**:  
-    The three-letter ISO code of the country.
-
-* **type**:  
-  Specifies the type of the feature, typically `Feature` for each administrative subdivision.
+- **name**: common name for the subdivision.
+- **admin**: country name.
+- **iso_3166_2**: ISO 3166-2 subdivision code where available.
+- **adm0_a3**: ISO 3166-1 alpha-3 country code.
 
 
-[geoboundaries]: https://www.geoboundaries.org/
+[natural-earth]: https://www.naturalearthdata.com/
 [datapackage]: http://dataprotocols.org/data-packages/
-[doc]: https://www.geoboundaries.org/simplifiedDownloads.html
+[doc]: https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-1-states-provinces/
 
 ## Preparation
 
@@ -53,13 +39,10 @@ python scripts/process.py
 
 All data is licensed under the [Open Data Commons Public Domain Dedication and License][pddl]. 
 
-Note that the original data from [geoboundaries][geoboundaries] is public domain. While no credit is 
-formally required a link back or credit to [geoboundaries][geoboundaries], [Lexman][lexman] and the [Open Knowledge Foundation][okfn] is much appreciated.
+Note that the original data from [Natural Earth][natural-earth] is public domain.
 
 All source code is licenced under the [MIT licence][mit].
 
 [mit]: https://opensource.org/licenses/MIT
-[geoboundaries]: https://www.geoboundaries.org/
+[natural-earth]: https://www.naturalearthdata.com/
 [pddl]: http://opendatacommons.org/licenses/pddl/1.0/
-[lexman]: http://github.com/lexman
-[okfn]: http://okfn.org/
