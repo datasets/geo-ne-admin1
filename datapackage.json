@@ -59,5 +59,8 @@
     }
   ],
   "homepage": "http://github.com/datasets/geo-ne-admin1",
-  "collection": "geojson"
+  "collection": "geojson",
+  "has_solutions": [
+    "global-country-region-reference-data"
+  ]
 }
