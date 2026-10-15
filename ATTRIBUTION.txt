@@ -1,0 +1,11 @@
+Natural Earth Admin-1 States and Provinces as GeoJSON
+
+Contains information from Natural Earth (https://www.naturalearthdata.com/), public domain under its terms of use (https://www.naturalearthdata.com/about/terms-of-use/).
+
+Changes made to the source data: the file is downloaded from the Natural Earth repository and republished with one change: the top-level "crs" member is removed. All features and properties are otherwise unchanged.
+
+The licence of the "type_en" column, and of the "gn_name", "woe_label" and "woe_name" text columns (taken from GeoNames and WOE), is unclear. See the README. The data is published as is.
+
+Not endorsed by, or affiliated with, Natural Earth.
+
+Natural Earth provides its data as a public service and is not responsible for problems relating to accuracy, content, design, or how it is used.

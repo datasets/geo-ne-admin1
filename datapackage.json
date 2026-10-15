@@ -22,8 +22,8 @@
   "licenses": [
     {
       "name": "ODC-PDDL-1.0",
-      "path": "http://opendatacommons.org/licenses/pddl/",
-      "title": "Open Data Commons Public Domain Dedication and License v1.0"
+      "path": "https://opendatacommons.org/licenses/pddl/1.0/",
+      "title": "Open Data Commons Public Domain Dedication and License v1.0. Covers the maintainers' own work and the content Natural Earth places in the public domain. The licence of some columns is unclear; see the README."
     }
   ],
   "resources": [
