@@ -18,9 +18,15 @@ The `admin1` resource exposes the following key properties:
 - **iso_3166_2**: ISO 3166-2 subdivision code where available.
 - **adm0_a3**: ISO 3166-1 alpha-3 country code.
 
+Each feature carries 121 properties in total (names in many languages, codes from other systems, map-label hints); the four above are the main ones. Notes:
+
+- `name` is empty (null) for 7 features.
+- `iso_3166_2` is always filled, but 188 values are Natural Earth placeholders rather than real ISO codes (for example `SY-X01~` or `-99-X16~`, used for disputed or special areas). Real ISO codes look like `AR-E`.
+- The same `iso_3166_2` code appears on more than one feature in some cases (60 codes).
+
 
 [natural-earth]: https://www.naturalearthdata.com/
-[datapackage]: http://dataprotocols.org/data-packages/
+[datapackage]: https://specs.frictionlessdata.io/data-package/
 [doc]: https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-1-states-provinces/
 
 ## Preparation
